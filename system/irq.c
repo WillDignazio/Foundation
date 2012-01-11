@@ -6,9 +6,9 @@
 ** as hardware to create handled functions. 
 */
 
-#include "system.h"
-#include "sysio.h"
-#include "../stdio/stdio.h"
+#include <foundation/system.h>
+#include <foundation/sysio.h>
+#include <foundation/stdio.h>
 
 /* Array of function pointers to handle custom IRQ handlers for a IRQ */
 void *irq_routines[16] = 

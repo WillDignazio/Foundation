@@ -4,7 +4,7 @@
 **	 Descriptor table for handling the interrupts and exception routines 
 ** fired during kernel execution. 
 */
-#include "./system.h"
+#include <foundation/system.h>
 
 /* IDT Entry
 ** 	- Entry for the IDT table 

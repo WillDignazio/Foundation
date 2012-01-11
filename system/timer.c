@@ -6,9 +6,9 @@
 ** used to generate system beeps at specific pitch frequencies. 
 */
 
-#include "system.h"
-#include "sysio.h"
-#include "../stdio/stdio.h"
+#include <foundation/system.h>
+#include <foundation/sysio.h>
+#include <foundation/stdio.h>
 
 unsigned int timer_ticks = 0; 
 unsigned int phase = 18;		// Really 18.222, but this will do.  

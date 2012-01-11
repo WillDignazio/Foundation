@@ -7,8 +7,8 @@
 ** will set up a new GDT so that we can control the descriptors, and add and
 ** remove descriptions of where our OS is. 
 */
-#include "system.h"
-#include "sysio.h"
+#include <foundation/system.h>
+#include <foundation/sysio.h>
 
 /* Definition of a GDT entry. Packed to prevent destructive optimizations */
 struct gdt_entry
