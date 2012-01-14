@@ -5,9 +5,9 @@
 ** in protected mode. 
 */
 
-#include "./stdio.h"
-#include "../system/sysio.h"
-#include "../system/system.h"
+#include <foundation/stdio.h>
+#include <foundation/sysio.h>
+#include <foundation/system.h>
 
 KEYMAP KEYBOARD_MAP;
 unsigned char shift_state = 0; 

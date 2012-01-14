@@ -6,7 +6,7 @@
 ** such as dvorak and different languages other then US english. 
 */
 
-#include "keymap.h"
+#include <foundation/keymap.h>
 
 void set_en_us_set1(KEYMAP *keymap)
 {

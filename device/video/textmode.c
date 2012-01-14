@@ -7,7 +7,7 @@
 ** graphical environment.
 */
 
-#include "./stdio.h"
+#include <foundation/stdio.h>
 
 /* Load Buffer
 ** 	- Loads a text page buffer into video memory. 

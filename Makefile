@@ -2,6 +2,7 @@ CC=gcc
 LD=ld
 AS=nasm 
 BITS=32
+OUTPUT	:=	$(CURDIR)/bin
 INCLUDE	:=	-I $(CURDIR)/include/  
 AINCLUDE:= 	-I $(CURDIR)/include/foundation/inc
 OUTPUT 	:=	$(CURDIR)/bin
@@ -13,14 +14,7 @@ AFLAGS := -f elf32 $(AINCLUDE)
 # Each of these has a makefile in them, which 
 # may or may not point to other Makefiles in sub-
 # directories. 
-maketree := $(CURDIR)/system/ $(CURDIR)/device/ $(CURDIR)/app/
-
-# Tree for sections of the kernel to be linked together. 
-# The lnktree is a list of the directories for which obj
-# files need to be linked, and put into a completed object. 
-# The finished object using this tree should be the kernel 
-# image. 
-lnktree := $(CURDIR)
+maketree := $(CURDIR)/system/ $(CURDIR)/device/
 
 # The make process for the kernel is started here, 
 # the default bit setting is 32, and for now there is
@@ -37,6 +31,8 @@ export AINCLUDE
 export OUTPUT
 export CFLAGS
 export AFLAGS
+export OUTPORT
+export srctree
 
 link: build
 	@echo "Done."
@@ -47,7 +43,12 @@ link: build
 # This allows each section of the kernel and its
 # subsections to build in specific ways. 
 build: 
+	@mkdir -p $(OUTPUT)
 	@for dir in $(maketree) ; do \
 		$(MAKE) -C $$dir ; \
 	done
-	
+
+clean: 
+	@echo "Cleaning..."
+	@echo "Removing Bin Folder..."
+	@rm -rf ./bin
