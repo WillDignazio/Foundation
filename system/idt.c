@@ -22,7 +22,7 @@ typedef struct idt_entry idt_entry;
 struct idt_ptr
 { 
 	unsigned short limit; 
-	struct idt_entry *base; 
+	unsigned int base; 
 }__attribute__((packed));
 typedef struct idt_ptr idt_ptr;
 
@@ -58,10 +58,10 @@ void idt_set_gate(unsigned char num, unsigned long base,
 void idt_install()
 {
 	idtp.limit = (sizeof(idt_entry) * 256) - 1;
-	idtp.base = &idt;
+	idtp.base = (int)&idt;
 	
 	/*Clear out the entire IDT, initializing it to zeros */
-	memset(&idt, 0, sizeof(idt_entry) * 256);
+	memset((void *)&idt, 0, sizeof(idt_entry) * 256);
 
 	/* Load the idt register */
 	idt_load();

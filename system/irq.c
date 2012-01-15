@@ -66,7 +66,7 @@ void irq_handler(struct regs *r)
 
 	/* Fund out if we have a custom handler to run for this IRQ. */
 	handler = irq_routines[r->int_no - 32]; 
-	set_eax(handler);
+	set_eax((int)handler);
 	if (handler)
 	{ 
 		handler(r); 

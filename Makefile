@@ -8,6 +8,7 @@ AINCLUDE:= 	-I $(CURDIR)/include/foundation/inc
 OUTPUT 	:=	$(CURDIR)/bin
 CFLAGS := -m32 -c $(INCLUDE)
 AFLAGS := -f elf32 $(AINCLUDE) 
+LFLAGS := -melf_i386 -r
 
 # These folder contain the top level make 
 # files for that portion of the kernel. 
@@ -15,6 +16,7 @@ AFLAGS := -f elf32 $(AINCLUDE)
 # may or may not point to other Makefiles in sub-
 # directories. 
 maketree := $(CURDIR)/system/ $(CURDIR)/device/
+linktree := $(OUTPUT)/system/ $(OUTPUT)/device/
 
 # The make process for the kernel is started here, 
 # the default bit setting is 32, and for now there is
@@ -34,8 +36,11 @@ export AFLAGS
 export OUTPORT
 export srctree
 
-link: build
-	@echo "Done."
+# Link the subfolders of the link tree into 
+# usable object files within the parent 
+# directory of OUTPUT. 
+link: build 
+	@for folder in $(linktree) ; do $(LD) $(LFLAGS) $$folder/*.o -o $$folder/a.out; done 
 
 # The object building file process, 
 # it iterates through the maketree list, 
@@ -45,7 +50,7 @@ link: build
 build: 
 	@mkdir -p $(OUTPUT)
 	@for dir in $(maketree) ; do \
-		$(MAKE) -C $$dir ; \
+		$(MAKE) -C $$dir -s ; \
 	done
 
 clean: 

@@ -10,7 +10,7 @@
 
 void set_en_us_set1(KEYMAP *keymap)
 {
-	(*keymap).name[25] = "EN-US Set 1";  
+	(*keymap).name[25] = (int)"EN-US Set 1";  
 	/* Lowercase Set */
 	(*keymap).lowercase[0x1E] = 'a';
 	(*keymap).lowercase[0x30] = 'b'; 
