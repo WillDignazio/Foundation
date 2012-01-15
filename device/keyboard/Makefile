@@ -6,5 +6,5 @@
 CSRC = *.c
 
 build: 
-	@for file in $(CSRC) ; do echo "Compiling " $$file"..." ; $(CC) $(CFLAGS) $$file -o $(OUTPUT)/device/$$file ; done
+	@for file in $(CSRC) ; do echo "Compiling "$$file"..." ; $(CC) $(CFLAGS) $$file -o $(OUTPUT)/device/$$file ; done
 	@for file in $(OUTPUT)/device/*.c ; do rename .c .o $(OUTPUT)/device/* ; done
