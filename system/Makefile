@@ -10,7 +10,7 @@
 CSRC := *.c 
 # ASM object files within the current directory
 # TODO: *.asm doesn't work for whatever god-aweful reason. 
-ASRC := core.asm irq.asm isrs.asm 
+ASRC := cores.asm irqs.asm isrss.asm 
 
 # The system makefile tree, while you do have 
 # manually input the makefile directorys you want
@@ -35,4 +35,4 @@ system:
 # we have to rename the extension on the object files 
 # that were just created from .c and .asm to .o
 	@for file in $(OUTPUT)/system/ ; do rename .c .o $(OUTPUT)/system/* ; done
-	@for file in $(OUTPUT)/system/asm/ ; do rename .asm .o $(OUTPUT)/system/asm/* ; done
+	@for file in $(OUTPUT)/system/ ; do rename .asm .o $(OUTPUT)/system/* ; done

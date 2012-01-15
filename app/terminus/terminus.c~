@@ -5,9 +5,9 @@
 ** kernel, providing a simple interface between the kernel program and the 
 ** user. 
 */
-#include <foundation/stdapp.h>
-#include <foundation/stdio.h>
-#include <foundation/system.h>
+#include "../stdapp.h"
+#include "../../stdio/stdio.h"
+#include "../../system/system.h"
 
 unsigned char input_buffer[150]; 
 
@@ -22,4 +22,3 @@ int terminus(unsigned char args[])
 
 	return 0; 
 } 
-

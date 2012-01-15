@@ -1,7 +1,6 @@
 #ifndef STDIO_H_GAURD
 #define STDIO_H_GAURD	
 
-#include "textmode.h"
 #include "keymap.h"
 
 static unsigned int STDIO_COLUMN = 0; 

@@ -8,15 +8,14 @@ AINCLUDE:= 	-I $(CURDIR)/include/foundation/inc
 OUTPUT 	:=	$(CURDIR)/bin
 CFLAGS := -m32 -c $(INCLUDE)
 AFLAGS := -f elf32 $(AINCLUDE) 
-LFLAGS := -melf_i386 -r
+LFLAGS := -melf_i386 -r 
 
 # These folder contain the top level make 
 # files for that portion of the kernel. 
 # Each of these has a makefile in them, which 
 # may or may not point to other Makefiles in sub-
 # directories. 
-maketree := $(CURDIR)/system/ $(CURDIR)/device/
-linktree := $(OUTPUT)/system/ $(OUTPUT)/device/
+maketree := $(CURDIR)/system/ $(CURDIR)/device/ $(CURDIR)/app/
 
 # The make process for the kernel is started here, 
 # the default bit setting is 32, and for now there is
@@ -36,11 +35,16 @@ export AFLAGS
 export OUTPORT
 export srctree
 
+all: link
+	@echo "Building Image..."
+	$(LD) -melf_i386 -r -T ./script/liveimg.ld $(shell find $(OUTPUT)/ -name a.out) -o $(OUTPUT)/foundation.o
+
 # Link the subfolders of the link tree into 
 # usable object files within the parent 
 # directory of OUTPUT. 
 link: build 
-	@for folder in $(linktree) ; do $(LD) $(LFLAGS) $$folder/*.o -o $$folder/a.out; done 
+	@echo "Linking Files..."
+	@for folder in $(shell find $(OUTPUT) -type d) ; do echo $$folder ; $(LD) $(LFLAGS) $$folder/*.o -o $$folder/a.out ; done 
 
 # The object building file process, 
 # it iterates through the maketree list, 
@@ -49,6 +53,10 @@ link: build
 # subsections to build in specific ways. 
 build: 
 	@mkdir -p $(OUTPUT)
+# We have to build the start and main files
+# as they are technically outside the recursive reach. 
+	$(CC) $(CFLAGS) ./kernel_main.c -o $(OUTPUT)/kmain.o
+	$(AS) $(AFLAGS) ./kernel_start.asm -o $(OUTPUT)/kstart.o
 	@for dir in $(maketree) ; do \
 		$(MAKE) -C $$dir -s ; \
 	done

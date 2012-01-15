@@ -4,7 +4,7 @@
 ** 		Provides standard functions for printing text to the screen, and 
 ** 	taking input from the user. 
 */
-#ifndef STDIO_H_GAURD_
+#ifndef STDIO_H_GAURD_ 
 #define STDIO_H_GAURD_
 
 #define WHITE_TXT	0x07
@@ -20,7 +20,6 @@ typedef struct TEXT_CHAR_BUFFER { unsigned short BUFFER[1]; } TEXT_CHAR_BUFFER;
 typedef struct TEXT_LINE_BUFFER { TEXT_CHAR_BUFFER BUFFER[80]; } TEXT_LINE_BUFFER; 
 typedef struct TEXT_PAGE_BUFFER { TEXT_LINE_BUFFER BUFFER[25]; } TEXT_PAGE_BUFFER; 
 
-
 /* Text Mode Operations */
 void t_wipe_console();							// Wipe Console
 void t_writeln(unsigned char string[]); 			// Print text
@@ -28,4 +27,5 @@ void t_write(unsigned char ch); 					// Print character
 void t_reset(); 
 void t_load_buffer(unsigned char *page); 
 void t_save_buffer(unsigned char *page); 
+
 #endif

@@ -6,6 +6,7 @@
 #include <foundation/system.h>
 #include <foundation/sysio.h>
 #include <foundation/stdio.h>
+#include <foundation/textmode.h>
 
 /* These are function prototypes for all of the exception
 *  handlers: The first 32 entries in the IDT are reserved

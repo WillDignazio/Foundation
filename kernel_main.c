@@ -7,10 +7,10 @@
 ** 	the system, and call all and any necessary functions. 
 */
 
-#include "./system/system.h" 
-#include "./system/sysio.h"
-#include "./stdio/stdio.h"
-#include "./app/stdapp.h"
+#include <foundation/system.h>
+#include <foundation/sysio.h>
+#include <foundation/stdio.h>
+#include <foundation/stdapp.h>
 
 /* Kernel Initializer
 ** 	- Readies the kernel

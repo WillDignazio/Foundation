@@ -8,6 +8,7 @@
 */
 
 #include <foundation/stdio.h>
+#include <foundation/textmode.h>
 
 /* Load Buffer
 ** 	- Loads a text page buffer into video memory. 

@@ -9,6 +9,7 @@
 #include <foundation/system.h>
 #include <foundation/sysio.h>
 #include <foundation/stdio.h>
+#include <foundation/textmode.h>
 
 /* Array of function pointers to handle custom IRQ handlers for a IRQ */
 void *irq_routines[16] = 
