@@ -15,8 +15,7 @@ unsigned char prompt[] ="F:/> ";
 void terminus_keyboard_handler()
 { 
 	keyboard_handler(); 
-	STDIO_INPUT_POINTER = &input_buffer+STDIO_COLUMN;
-	t_write(STDIO_INPUT_POINTER); 
+	t_type('w'); 
 }
 
 void terminus_handlers_install()
@@ -33,8 +32,10 @@ int terminus(unsigned char args[])
 	t_writeln(":: Terminus ::"); 
 	t_writeln("Installing New Handler"); 
 	terminus_handlers_install(); 
+	t_writeln("Setting STDIO_INPUT_POINTER");
+	STDIO_INPUT_POINTER = &input_buffer[0]; 
 	t_write(prompt);
-	while(1==1){};
+	while(1){};
 
 	return 0; 
 } 

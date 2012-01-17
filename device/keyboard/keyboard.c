@@ -33,7 +33,7 @@ void keyboard_handler()
 				// If the shiftstate is true, we're in the uppercase zone, else we're in the lowercase set. 
 				unsigned char new_scan = (shift_state ? KEYBOARD_MAP.uppercase:KEYBOARD_MAP.lowercase)[scancode];
 				*STDIO_INPUT_POINTER = new_scan;
-				STDIO_INPUT_POINTER++; 				
+				STDIO_INPUT_POINTER++; 
 			}
 			break; 
 	}

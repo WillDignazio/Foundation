@@ -50,10 +50,17 @@ void t_reset()
 	STDIO_ROW = 0; 
 } 
 
-/* Print Character
-** 	- Prints a single character to the console 
-**	- Argument must be asingle character
-*/
+void t_type(unsigned char ch)
+{ 
+	unsigned int i = STDIO_ROW*80*2;
+	i += (2*STDIO_COLUMN); 
+	VIDMEM_START[i] = ch;
+	i++;
+	VIDMEM_START[i] = GREY_TXT; 
+	STDIO_COLUMN++;
+};
+
+/* Write Line Without Newline */
 void t_write(unsigned char string[])
 {
 	unsigned int i = STDIO_ROW*80*2;
