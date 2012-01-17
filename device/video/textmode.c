@@ -54,20 +54,29 @@ void t_reset()
 ** 	- Prints a single character to the console 
 **	- Argument must be asingle character
 */
-void t_write(unsigned char ch)
+void t_write(unsigned char string[])
 {
-	unsigned i = STDIO_ROW*80*2;				// Size of screen, at line
-	i += (2*STDIO_COLUMN);					// Integrate column
-	VIDMEM_START[i] = ch;				// Insert character into vidmem 
-	i++; 								// Move up a byte
-	VIDMEM_START[i] = GREY_TXT;			// Insert grey text value
-	i++;								// Move up another byte
-	STDIO_COLUMN++;							// Advance up the column
-	if(STDIO_COLUMN==80)
+	unsigned int i = STDIO_ROW*80*2;
+	i += (2*STDIO_COLUMN);
+	char *message; 
+	message = string; 
+	while(*message != 0)
 	{ 
-		STDIO_ROW++; 
-		STDIO_COLUMN=0; 
-	} 
+		if (*message == '\n')
+		{
+			STDIO_ROW++; 
+			i = (STDIO_ROW*80*2);
+			*message++;
+			STDIO_COLUMN = 0; 
+		} else { 
+			VIDMEM_START[i] = *message; 
+			*message++;
+			i++;
+			VIDMEM_START[i] = GREY_TXT;
+			i++;
+			STDIO_COLUMN++; 
+		};
+	}; 
 }; 
 
 /* Print Line 

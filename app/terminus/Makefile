@@ -6,6 +6,6 @@
 CSRC := *.c
 
 build: 
-	@mkdir $(OUTPUT)/terminus
+	@mkdir -p $(OUTPUT)/terminus
 	@for file in $(CSRC); do $(CC) $(CFLAGS) $$file -o $(OUTPUT)/terminus/$$file; done
 	@for file in $(OUTPUT)/terminus/*.*; do rename .c .o $(OUTPUT)/terminus/*; done

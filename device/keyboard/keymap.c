@@ -56,7 +56,7 @@ void set_en_us_set1(KEYMAP *keymap)
 	(*keymap).lowercase[0x39] = ' ';		// Space 
 	(*keymap).lowercase[0x0F] = '*';		// Tab 
 	(*keymap).lowercase[0x3A] = '*';		// Caps lock 
-	(*keymap).lowercase[0x1C] = '*';		// Enter 
+	(*keymap).lowercase[0x1C] = '\n';		// Enter 
 	(*keymap).lowercase[0x01] = '*';		// Escape 
 	(*keymap).lowercase[0x3B] = '*'; 		// F1
 	(*keymap).lowercase[0x3C] = '*'; 		// F2

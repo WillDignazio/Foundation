@@ -23,7 +23,7 @@ typedef struct TEXT_PAGE_BUFFER { TEXT_LINE_BUFFER BUFFER[25]; } TEXT_PAGE_BUFFE
 /* Text Mode Operations */
 void t_wipe_console();							// Wipe Console
 void t_writeln(unsigned char string[]); 			// Print text
-void t_write(unsigned char ch); 					// Print character
+void t_write(unsigned char string[]); 					// Print character
 void t_reset(); 
 void t_load_buffer(unsigned char *page); 
 void t_save_buffer(unsigned char *page); 
