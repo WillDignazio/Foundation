@@ -8,34 +8,43 @@
 #include <foundation/stdapp.h>
 #include <foundation/stdio.h>
 #include <foundation/system.h>
+#include <terminus/interface.h>
+#include <terminus/inputmod.h>
 
+void (*testptr)() = keyboard_handler; 
+bool run_super = false; 
 unsigned char input_buffer[150]; 
 unsigned char prompt[] ="F:/> "; 
 
 void terminus_keyboard_handler()
 { 
 	keyboard_handler(); 
-	t_type('w'); 
+	if (run_super){
+	t_type(*(STDIO_INPUT_POINTER-1)); 
+	run_super = !run_super; 
+	} 
+	else { run_super = true; }
 }
 
+/* Custom keyboard interrupt handler for the shell */
 void terminus_handlers_install()
 { 
 	irq_install_handler(1, terminus_keyboard_handler); 
 }
 		
-
+/* Main function for the shell, this simply allows 
+** a repeated function after setting the shell custom 
+** interrupt handler. */
 int terminus(unsigned char args[])
 {
 	t_wipe_console(); 
 	t_reset(); 
 
 	t_writeln(":: Terminus ::"); 
-	t_writeln("Installing New Handler"); 
 	terminus_handlers_install(); 
-	t_writeln("Setting STDIO_INPUT_POINTER");
-	STDIO_INPUT_POINTER = &input_buffer[0]; 
+	STDIO_INPUT_POINTER = &input_buffer[0]; //NOTE: This is a crucial step, that if multiprocessing becomes a thing, must be replicated. 
 	t_write(prompt);
-	while(1){};
+	while(1){};			// Just hang around until the user does something. 
 
 	return 0; 
 } 

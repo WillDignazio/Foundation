@@ -8,6 +8,9 @@
 # Current directory makefile file 
 # procession tree. 
 APPTREE := $(CURDIR)/terminus 
+OUTPUT :=$(OUTPUT)/app/
+export OUTPUT
 
 build: 
+	@mkdir $(OUTPUT)
 	@for dir in $(APPTREE) ; do $(MAKE) -C $$dir -s ; done

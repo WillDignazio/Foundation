@@ -73,8 +73,7 @@ void set_en_us_set1(KEYMAP *keymap)
 
 
 	/* Uppercase Set */
-
-
+	//TODO: Write the uppercase map set. 
 }
 
 void set_en_us_set2(KEYMAP *keymap)

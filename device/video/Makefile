@@ -10,5 +10,5 @@ CSRC := *.c
 # files.
 
 build: 
-	@for file in $(CSRC) ; do echo "Compiling "$$file"..." ; $(CC) $(CFLAGS) $$file -o $(OUTPUT)/device/$$file ; done
-	@for file in $(OUTPUT)/device/* ; do rename .c .o $(OUTPUT)/device/* ; done 
+	@for file in $(CSRC) ; do echo "Compiling "$$file"..." ; $(CC) $(CFLAGS) $$file -o $(OUTPUT)/$$file ; done
+	@for file in $(OUTPUT)/* ; do rename .c .o $(OUTPUT)/* ; done 

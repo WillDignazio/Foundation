@@ -3,8 +3,10 @@
 # files will be dumped intot the OUTPUT 
 # folder provided by the parent makefile. 
 DEVTREE := $(CURDIR)/keyboard $(CURDIR)/video
+OUTPUT := $(OUTPUT)/device/
+
 
 build:
-	@mkdir -p $(OUTPUT)/device
+	@mkdir -p $(OUTPUT)
 	@for dir in $(DEVTREE) ; do $(MAKE) -C $$dir -s; done
 

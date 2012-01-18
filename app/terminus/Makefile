@@ -4,8 +4,10 @@
 # provided. 
 
 CSRC := *.c
+OUTPUT := $(OUTPUT)/terminus
+export OUTPUT
 
 build: 
-	@mkdir -p $(OUTPUT)/terminus
-	@for file in $(CSRC); do $(CC) $(CFLAGS) $$file -o $(OUTPUT)/terminus/$$file; done
-	@for file in $(OUTPUT)/terminus/*.*; do rename .c .o $(OUTPUT)/terminus/*; done
+	@mkdir $(OUTPUT)
+	@for file in $(CSRC); do echo "Compiling "$$file"..."; $(CC) $(CFLAGS) $$file -o $(OUTPUT)/$$file; done
+	@for file in $(OUTPUT)/*.*; do rename .c .o $(OUTPUT)/*; done

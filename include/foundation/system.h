@@ -9,6 +9,10 @@
 
 #include "sysio.h"
 
+/* There isn't a definition for bool in what we're doing, 
+so we are going to make one up here in the system header.*/ 
+typedef enum { false, true } bool; 
+
 /* IDT Gate Setter, allows to install interrupt handler */
 void idt_set_gate(unsigned char num, unsigned long base, 
 					unsigned short sel, unsigned char flags); 
