@@ -12,5 +12,5 @@ OUTPUT :=$(OUTPUT)/app/
 export OUTPUT
 
 build: 
-	@mkdir $(OUTPUT)
+	@mkdir -p $(OUTPUT)
 	@for dir in $(APPTREE) ; do $(MAKE) -C $$dir -s ; done

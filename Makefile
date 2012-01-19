@@ -61,6 +61,13 @@ build:
 		$(MAKE) -C $$dir -s ; \
 	done
 
+bind-atlas: all
+	@mkdir -p $(OUTPUT)/images/
+	@echo "Binding Atlas..."
+	dd if=/dev/zero of=$(OUTPUT)/fluff.bin bs=1M count=10
+	$(LD) -melf_i386 -T ./script/atlas.ld $(OUTPUT)/foundation.o -o $(OUTPUT)/fbounda.o
+	cat $(OUTPUT)/fbounda.o $(OUTPUT)/fluff.bin > $(OUTPUT)/images/fnlive.img
+
 clean: 
 	@echo "Cleaning..."
 	@echo "Removing Bin Folder..."

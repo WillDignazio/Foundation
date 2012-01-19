@@ -8,6 +8,6 @@ OUTPUT := $(OUTPUT)/terminus
 export OUTPUT
 
 build: 
-	@mkdir $(OUTPUT)
+	@mkdir -p $(OUTPUT)
 	@for file in $(CSRC); do echo "Compiling "$$file"..."; $(CC) $(CFLAGS) $$file -o $(OUTPUT)/$$file; done
 	@for file in $(OUTPUT)/*.*; do rename .c .o $(OUTPUT)/*; done
