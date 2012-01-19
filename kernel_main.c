@@ -11,6 +11,7 @@
 #include <foundation/sysio.h>
 #include <foundation/stdio.h>
 #include <foundation/stdapp.h>
+#include <foundation/string.h>
 
 /* Kernel Initializer
 ** 	- Readies the kernel
@@ -48,6 +49,8 @@ void kernel_main()
 {
 	kernal_init();
 	t_writeln("Launching Terminus Shell..."); 
-	terminus(""); 
+	unsigned char num = strlen("TEST"); 
+	t_writeln(num); 
+	//terminus(""); 
 };
 

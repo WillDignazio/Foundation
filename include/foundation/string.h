@@ -5,5 +5,4 @@
 
 int strlen(unsigned char[]);
 
-
 #endif 
