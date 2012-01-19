@@ -44,7 +44,7 @@ all: link
 # directory of OUTPUT. 
 link: build 
 	@echo "Linking Files..."
-	@for folder in $(shell find $(OUTPUT) -type d); do $(LD) $(LFLAGS) $$folder/*.o -o $$folder/a.out; done 
+	@for folder in $(shell find $(OUTPUT) -type d); do echo $(LD) $(LFLAGS) $$folder/*.o -o $$folder/a.out; $(LD) $(LFLAGS) $$folder/*.o -o $$folder/a.out; done 
 
 # The object building file process, 
 # it iterates through the maketree list, 
