@@ -49,8 +49,6 @@ void kernel_main()
 {
 	kernal_init();
 	t_writeln("Launching Terminus Shell..."); 
-	unsigned char num = strlen("TEST"); 
-	t_writeln(num); 
-	//terminus(""); 
+	terminus(""); 
 };
 

@@ -61,9 +61,10 @@ build:
 		$(MAKE) -C $$dir -s ; \
 	done
 
-bind-atlas: all
+bind-atlas: link 
 	@mkdir -p $(OUTPUT)/images/
 	@echo "Binding Atlas..."
+	$(LD) -melf_i386 -r $(shell find $(OUTPUT)/ -name a.out) -o $(OUTPUT)/foundation.o
 	dd if=/dev/zero of=$(OUTPUT)/fluff.bin bs=1M count=10
 	$(LD) -melf_i386 -T ./script/atlas.ld $(OUTPUT)/foundation.o -o $(OUTPUT)/fbounda.o
 	cat $(OUTPUT)/fbounda.o $(OUTPUT)/fluff.bin > $(OUTPUT)/images/fnlive.img

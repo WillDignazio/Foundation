@@ -1,2 +1,3 @@
 #Atlas build object
-Atlas.o
+*.o
+*.img
