@@ -10,6 +10,11 @@ CFLAGS := -m32 -c $(INCLUDE)
 AFLAGS := -f elf32 $(AINCLUDE) 
 LFLAGS := -melf_i386 -r 
 
+# If the user wants to bind atlas to 
+# the kernel, they have to set the 
+# atlas build path
+ATLAS := Atlas.o
+
 # These folder contain the top level make 
 # files for that portion of the kernel. 
 # Each of these has a makefile in them, which 
@@ -55,8 +60,6 @@ build:
 	@mkdir -p $(OUTPUT)
 # We have to build the start and main files
 # as they are technically outside the recursive reach. 
-	$(CC) $(CFLAGS) ./kernel_main.c -o $(OUTPUT)/kmain.o
-	$(AS) $(AFLAGS) ./kernel_start.asm -o $(OUTPUT)/kstart.o
 	@for dir in $(maketree) ; do \
 		$(MAKE) -C $$dir -s ; \
 	done
@@ -66,7 +69,7 @@ bind-atlas: link
 	@echo "Binding Atlas..."
 	$(LD) -melf_i386 -r $(shell find $(OUTPUT)/ -name a.out) -o $(OUTPUT)/foundation.o
 	dd if=/dev/zero of=$(OUTPUT)/fluff.bin bs=1M count=10
-	$(LD) -melf_i386 -T ./script/atlas.ld $(OUTPUT)/foundation.o -o $(OUTPUT)/fbounda.o
+	$(LD) -melf_i386 -T ./script/atlas.ld $(ATLAS) $(OUTPUT)/foundation.o -o $(OUTPUT)/fbounda.o
 	cat $(OUTPUT)/fbounda.o $(OUTPUT)/fluff.bin > $(OUTPUT)/images/fnlive.img
 
 clean: 
