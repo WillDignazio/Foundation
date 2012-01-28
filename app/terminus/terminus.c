@@ -8,6 +8,7 @@
 #include <foundation/stdapp.h>
 #include <foundation/stdio.h>
 #include <foundation/system.h>
+#include <foundation/string.h>
 #include <terminus/interface.h>
 #include <terminus/inputmod.h>
 
@@ -16,6 +17,12 @@ bool run_super = false;
 unsigned char input_buffer[150]; 
 unsigned char prompt[] ="F:/> "; 
 
+/* Removes the old keyboard input 
+** handler, and replaces it with a 
+** wrapper that adds on new 
+** functionality specifically for 
+** this application 
+*/
 void terminus_keyboard_handler()
 { 
 	keyboard_handler(); 
@@ -44,6 +51,8 @@ int terminus(unsigned char args[])
 	terminus_handlers_install(); 
 	STDIO_INPUT_POINTER = &input_buffer[0]; //NOTE: This is a crucial step, that if multiprocessing becomes a thing, must be replicated. 
 	t_write(prompt);
+	char *str = itos(100);
+	t_write(str);
 	while(1){};			// Just hang around until the user does something. 
 
 	return 0; 
