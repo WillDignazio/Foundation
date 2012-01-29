@@ -6,3 +6,11 @@
 ** management for malloc and the allocation
 ** of memory for variables within processes. 
 */
+
+#include <foundation/memory.h> 
+#include <foundation/membloc.h>
+#include <foundation/textmode.h>
+
+void memstackinit() { 
+	
+}

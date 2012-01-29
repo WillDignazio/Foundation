@@ -10,6 +10,11 @@
 #ifndef MEMORY_GAURD_H
 #define MEMORY_GARUD_H
 
+#include "membloc.h"
+
+extern PRIMARY_MEMORY_BLOCK* SYSTEM_PRIMARY_MEMORY_BLOCK; 
+
 int* malloc(int); 
+void meminit(); 
 
 #endif

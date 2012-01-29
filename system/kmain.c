@@ -12,6 +12,9 @@
 #include <foundation/stdio.h>
 #include <foundation/stdapp.h>
 #include <foundation/string.h>
+#include <foundation/membloc.h>
+
+PRIMARY_MEMORY_BLOCK* SYSTEM_PRIMARY_MEMORY_BLOCK; 
 
 /* Kernel Initializer
 ** 	- Readies the kernel
@@ -23,8 +26,6 @@ void kernal_init()
 	idt_install();				
 	isrs_install();
 	irq_install(); 
-	timer_install(); 
-	keyboard_install(); 
 	asm volatile ("sti"); 
 	t_wipe_console();								// Clear boot stuff
 	t_writeln("- Booting SOS Version 0.03.2");
@@ -33,12 +34,21 @@ void kernal_init()
 	t_writeln(":: Installed IDT");
 	t_writeln(":: Pointed Exception Vectors"); 
 	t_writeln(":: Pointed Interrupt Vectors"); 
+	
 	t_writeln(":: Installed Timer Driver");
+	timer_install(); 
+	
 	t_writeln(":: Installed Keyboard Driver"); 
+	keyboard_install(); 
+	
 	t_writeln(""); 
 	t_writeln("- Setting Up Environment"); 
+	
 	t_writeln(":: Creating Keymap (EN-US Set 1)");
 	set_en_us_set1(&KEYBOARD_MAP); 
+	
+	t_writeln(":: Creating Primary Memory Block"); 
+	memstackinit(); 
 };
 
 /* Main Function 
@@ -48,7 +58,6 @@ void kernal_init()
 void kernel_main()
 {
 	kernal_init();
-	malloc(45); 
 	t_writeln("Done."); 
 	//t_writeln("Launching Terminus Shell..."); 
 	//terminus(""); 
