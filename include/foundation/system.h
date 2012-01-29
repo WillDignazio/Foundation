@@ -8,6 +8,7 @@
 #define SYSTEM_H_GAURD
 
 #include "sysio.h"
+#include "membloc.h"
 
 /* There isn't a definition for bool in what we're doing, 
 so we are going to make one up here in the system header.*/ 
@@ -37,6 +38,6 @@ void timer_install();
 void wait(int ticks); 
 
 /* end of kernel stub */
-void end(); 
+extern PRIMARY_MEMORY_BLOCK endstub;  
 
 #endif

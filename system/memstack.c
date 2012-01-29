@@ -10,7 +10,8 @@
 #include <foundation/memory.h> 
 #include <foundation/membloc.h>
 #include <foundation/textmode.h>
+#include <foundation/system.h>
 
 void memstackinit() { 
-	
+	*SYSTEM_PRIMARY_MEMORY_BLOCK = &endstub;   
 }

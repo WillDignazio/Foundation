@@ -3,8 +3,8 @@
 ;; 	- Allows for quick malloc 
 [BITS 32] 
 [SECTION .endstub]
-[global end]
+[global endstub]
 
 endsign	db	'KERNEL_END'
-;; End mark label
-end: 
+;; End mark variable 
+endstub db 0 

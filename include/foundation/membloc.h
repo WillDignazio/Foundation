@@ -9,6 +9,7 @@
 
 #ifndef MEMBLOC_GAURD_H
 #define MEMBLOC_GAURD_H
+
 typedef struct REGISTER_BLOCK { 
 	unsigned int EAX, EBX, ECX, EDX; 
 	unsigned int EFLAGS; 
