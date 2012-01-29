@@ -20,15 +20,11 @@ char* itos(int num)
 	for(i=0; i<25; i++)
 	{ buffer[i] = '\0'; }
 
-	t_writeln("Starting Loops..."); 
-
 	if (num>9) { 	
 		int columns = 0; 
 		int highest = 0; 
-		t_writeln("First Loop...");
 		while(highest<num)
-		{  highest = highest * 10; t_write('w'); }
-		t_writeln("Second Loop...");
+		{  highest = highest * 10; }
 		while(highest != 0)
 		{
 			columns++; 
@@ -39,13 +35,11 @@ char* itos(int num)
 		{ 
 			buffer[i] = i+'0';
 		}
-		t_writeln(buffer); 
-		t_writeln("GOT TO HERE"); 
 	} else { 
 		buffer[0] = num+'0'; 
 	} 
 
-	return &buffer[0];
+	return (int)&buffer[0];
 }
 
 

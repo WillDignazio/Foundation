@@ -16,7 +16,6 @@ typedef enum { false, true } bool;
 /* IDT Gate Setter, allows to install interrupt handler */
 void idt_set_gate(unsigned char num, unsigned long base, 
 					unsigned short sel, unsigned char flags); 
-
 /* GDT Gate Setter, allows to install new gdt gates. */
 void gdt_set_gate(int num, unsigned long base, unsigned long limit, 
 					unsigned char access, unsigned char gran); 
@@ -36,5 +35,8 @@ void timer_phase(int hz);
 void timer_handler(struct regs *r);
 void timer_install(); 
 void wait(int ticks); 
+
+/* end of kernel stub */
+void end(); 
 
 #endif

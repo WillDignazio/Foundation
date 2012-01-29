@@ -48,7 +48,9 @@ void kernal_init()
 void kernel_main()
 {
 	kernal_init();
-	t_writeln("Launching Terminus Shell..."); 
-	terminus(""); 
+	malloc(45); 
+	t_writeln("Done."); 
+	//t_writeln("Launching Terminus Shell..."); 
+	//terminus(""); 
 };
 

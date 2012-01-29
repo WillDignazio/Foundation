@@ -9,4 +9,5 @@ SECTIONS
 	/*. = 0x54A00;*/ 
 	.rodata : /*AT(0x5000)*/ { *(.rodata) }
 	.bss : /*AT(0x8000)*/ { *(.bss) }
+	.endstub : { *(.endstub) }
 }

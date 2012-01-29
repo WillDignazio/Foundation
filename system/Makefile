@@ -8,7 +8,7 @@
 
 
 #System build tree
-SYSTEMTREE := $(CURDIR)/lib 
+SYSTEMTREE :=  
 # C source files within the current directory
 CSRC := *.c 
 # ASM object files within the current directory

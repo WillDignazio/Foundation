@@ -26,9 +26,12 @@ typedef struct PROCESS_BLOCK {
 	DESCRIPTOR_BLOCK CODE; 
 	DESCRIPTOR_BLOCK DATA; 
 	DESCRIPTOR_BLOCK STATIC; 
-	unsigned char ATTRIBUTES;
+	unsigned short ATTRIBUTES;
 } PROCESS_BLOCK; 
 
-
+typedef struct MEMORY_BLOCK {
+	DESCRIPTOR_BLOCK RANGE; 
+	unsigned short ATTRIBUTES; 
+} MEMORY_BLOCK; 
 
 #endif

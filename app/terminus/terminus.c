@@ -24,12 +24,6 @@ int terminus(unsigned char args[])
 	t_writeln(":: Terminus ::"); 
 	t_write(prompt);
 
-	unsigned int num = 1510; 
-	char *str = itos(num); 
-	t_write(str);
-	t_writeln("");
-	t_writeln("Done.");
-
 	while(1){};			// Just hang around until the user does something. 
 
 	return 0; 
