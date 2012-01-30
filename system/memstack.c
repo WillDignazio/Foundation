@@ -13,32 +13,31 @@
 #include <foundation/memory.h> 
 
 void memstackinit() {
-	t_writeln(":::: Initializing memory"); 
-	memset(&endstub, 0, sizeof(PRIMARY_MEMORY_BLOCK));
+	int primary_addr = &endstub;
+	int child_addr = &endstub + sizeof(PRIMARY_MEMORY_BLOCK)+1; 
 	
-	t_writeln(":::: Creating primary block descriptor"); 
+	t_writeln("  -> Initializing memory"); 
+	memset(primary_addr, 0, sizeof(PRIMARY_MEMORY_BLOCK));
+	memset(child_addr, 0, sizeof(MEMORY_BLOCK)); 
+
+	t_writeln("  -> Creating primary block descriptor"); 
 	struct PRIMARY_MEMORY_BLOCK primary; 
-	primary.REGION.START = &endstub + sizeof(PRIMARY_MEMORY_BLOCK) + 1; 
-	primary.START = &endstub + sizeof(PRIMARY_MEMORY_BLOCK) + 1; 
+	primary.REGION.START = child_addr; 
+	/* START is really a pointer to a MEMORY block, but we're fooling it. */
+	primary.START = child_addr;  
 
-	t_writeln(":::: Creating initial block descriptor"); 
+	t_writeln("  -> Creating initial block descriptor"); 
 	struct MEMORY_BLOCK child; 
-	child.REGION.START = primary.REGION.START + 1; 
-
-	t_writeln(":::: Set endstub to eax for debug");
-	set_eax(&endstub); 
-	
-	t_writeln(":::: Set primary region start to eax for debug"); 
-	set_eax(primary.REGION.START); 
+	child.REGION.START = primary.REGION.START; 
 	primary.REGION.END = 0xFFFFFFFF;
 	
-	t_writeln(":::: Set primary region next to eax for debug");
-	
+	t_writeln("  -> Installing primary memory block"); 	
+	memcpy(primary_addr, &primary, sizeof(PRIMARY_MEMORY_BLOCK)); 
 
-	t_writeln(":::: Installing primary memory block"); 	
-	memcpy(&endstub, &primary, sizeof(PRIMARY_MEMORY_BLOCK)); 
-	
-	t_writeln(":::: Pointing primary block descriptor"); 
-	PRIMARY_MEMORY_BLOCK *SYSTEM_PRIMARY_MEMORY_BLOCK = &endstub; 
+	t_writeln("  -> Installing initial block descriptor"); 
+	memcpy(child_addr, &child, sizeof(MEMORY_BLOCK)); 
+
+	t_writeln("  -> Pointing primary block descriptor"); 
+	PRIMARY_MEMORY_BLOCK *SYSTEM_PRIMARY_MEMORY_BLOCK = primary_addr; 
 
 }
