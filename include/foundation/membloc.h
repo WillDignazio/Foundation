@@ -21,6 +21,7 @@ typedef struct DESCRIPTOR_BLOCK {
 	unsigned int START; 
 	unsigned int END; 
 } DESCRIPTOR_BLOCK; 
+
 typedef struct PROCESS_BLOCK { 
 	DESCRIPTOR_BLOCK CODE; 
 	DESCRIPTOR_BLOCK DATA; 
@@ -35,7 +36,7 @@ typedef struct MEMORY_BLOCK {
 
 typedef struct PRIMARY_MEMORY_BLOCK { 
 	DESCRIPTOR_BLOCK REGION; 
-	MEMORY_BLOCK* START; 
+	MEMORY_BLOCK* START, END; 
 } PRIMARY_MEMORY_BLOCK; 
 
 #endif

@@ -12,8 +12,7 @@
 #include <foundation/membloc.h>
 #include <foundation/textmode.h>
 
-void memcpy(void* addr, void* value) { 
-	unsigned int size = sizeof(value);
+void memcpy(unsigned char* addr, unsigned char* value, unsigned int size) { 
 	unsigned int i = 0; 
 	for (i=0; i<size; i++)
 	{
@@ -21,7 +20,7 @@ void memcpy(void* addr, void* value) {
 	}
 }
 
-void memset(void* addr, unsigned int val, unsigned int len) { 
+void memset(unsigned char* addr, unsigned int val, unsigned int len) { 
 	unsigned int i = 0;
 	for(i=0; i<len; i++)
 	{ 
@@ -29,9 +28,11 @@ void memset(void* addr, unsigned int val, unsigned int len) {
 	}
 }
 
+/*
 int* malloc(int size) 
 {
 	t_writeln("mallocing away"); 	
 	
 	return 0; 
 }
+*/

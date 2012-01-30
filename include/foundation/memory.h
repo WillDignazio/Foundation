@@ -14,7 +14,10 @@
 
 extern PRIMARY_MEMORY_BLOCK* SYSTEM_PRIMARY_MEMORY_BLOCK; 
 
+void memcpy(unsigned char*, unsigned char*,unsigned int); 
+void memset(unsigned char*,unsigned int,unsigned int); 
 int* malloc(int); 
 void meminit(); 
+
 
 #endif

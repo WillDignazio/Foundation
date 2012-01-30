@@ -6,7 +6,7 @@ OUTPUT	:=	$(CURDIR)/bin
 INCLUDE	:=	-I $(CURDIR)/include/  
 AINCLUDE:= 	-I $(CURDIR)/include/foundation/inc
 OUTPUT 	:=	$(CURDIR)/bin
-CFLAGS := -m32 -c $(INCLUDE)
+CFLAGS := -m32 -nostdlib -nodefaultlibs -c $(INCLUDE)
 AFLAGS := -f elf32 $(AINCLUDE) 
 LFLAGS := -melf_i386 -r 
 
