@@ -27,7 +27,7 @@ void kernal_init()
 	irq_install(); 
 	asm volatile ("sti"); 
 	t_wipe_console();								// Clear boot stuff
-	t_writeln("- Booting SOS Version 0.03.2");
+	t_writeln("- FOK Version 0.04.1");
 	t_writeln("########################"); 
 	t_writeln(":: Installed GDT");
 	t_writeln(":: Installed IDT");
@@ -57,10 +57,6 @@ void kernal_init()
 void kernel_main()
 {
 	kernal_init();
-	malloc(100); 
 	t_writeln("Done."); 
-	//int *ptr = malloc(100); 
-	//t_writeln("Launching Terminus Shell..."); 
-	//terminus(""); 
 };
 
