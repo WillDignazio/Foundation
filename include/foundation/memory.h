@@ -8,7 +8,7 @@
 */
 
 #ifndef MEMORY_GAURD_H
-#define MEMORY_GARUD_H
+#define MEMORY_GAURD_H
 
 #include "membloc.h"
 
@@ -18,6 +18,5 @@ void memcpy(unsigned char*, unsigned char*,unsigned int);
 void memset(unsigned char*,unsigned int,unsigned int); 
 int* malloc(int); 
 void meminit(); 
-
 
 #endif

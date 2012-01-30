@@ -28,11 +28,9 @@ void memset(unsigned char* addr, unsigned int val, unsigned int len) {
 	}
 }
 
-/*
 int* malloc(int size) 
 {
-	t_writeln("mallocing away"); 	
-	
+	t_writeln("mallocing away");
 	return 0; 
 }
-*/
+

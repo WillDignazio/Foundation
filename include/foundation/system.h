@@ -40,4 +40,7 @@ void wait(int ticks);
 /* end of kernel stub */
 extern PRIMARY_MEMORY_BLOCK endstub;  
 
+static struct PRIMARY_MEMORY_BLOCK *SYSTEM_PRIMARY_MEMORY_BLOCK = &endstub; 
+
+
 #endif

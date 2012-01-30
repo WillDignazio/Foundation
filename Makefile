@@ -6,9 +6,9 @@ OUTPUT	:=	$(CURDIR)/bin
 INCLUDE	:=	-I $(CURDIR)/include/  
 AINCLUDE:= 	-I $(CURDIR)/include/foundation/inc
 OUTPUT 	:=	$(CURDIR)/bin
-CFLAGS := -m32 -nostdlib -nodefaultlibs -c $(INCLUDE)
+CFLAGS := -m32 -nostdlibs -nodefaultlibs -c $(INCLUDE)
 AFLAGS := -f elf32 $(AINCLUDE) 
-LFLAGS := -melf_i386 -r 
+LFLAGS := -melf_i386 -nostdlibs -nodefaultlibs -r 
 
 # If the user wants to bind atlas to 
 # the kernel, they have to set the 

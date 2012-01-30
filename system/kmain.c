@@ -13,8 +13,7 @@
 #include <foundation/stdapp.h>
 #include <foundation/string.h>
 #include <foundation/membloc.h>
-
-PRIMARY_MEMORY_BLOCK* SYSTEM_PRIMARY_MEMORY_BLOCK; 
+#include <foundation/memory.h>
 
 /* Kernel Initializer
 ** 	- Readies the kernel
@@ -58,7 +57,9 @@ void kernal_init()
 void kernel_main()
 {
 	kernal_init();
+	malloc(100); 
 	t_writeln("Done."); 
+	//int *ptr = malloc(100); 
 	//t_writeln("Launching Terminus Shell..."); 
 	//terminus(""); 
 };
