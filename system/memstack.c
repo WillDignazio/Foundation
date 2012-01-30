@@ -52,7 +52,7 @@ void memstackinit() {
 	t_writeln("  -> Creating initial block descriptor"); 
 	struct MEMORY_BLOCK child; 
 	child.REGION.START = primary.REGION.START; 
-	primary.REGION.END = 0xFFFFFFFF;
+	child.REGION.END = 0xFFFFFFFF;
 
 	/* After everything in the blocks has been initialized, 
 	** the blocks need to be copied from here, to the end of the 

@@ -57,6 +57,12 @@ void kernal_init()
 void kernel_main()
 {
 	kernal_init();
+	MEMORY_BLOCK *child1 = &endstub + sizeof(PRIMARY_MEMORY_BLOCK); 
+	if((*SYSTEM_PRIMARY_MEMORY_BLOCK).REGION.START == (*SYSTEM_PRIMARY_MEMORY_BLOCK).START) { 
+		t_writeln("Good to go"); 
+	} else { 
+		t_writeln("Error"); 
+	} 
 	t_writeln("Done."); 
 };
 
