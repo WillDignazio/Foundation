@@ -59,10 +59,18 @@ void kernel_main()
 	kernal_init();
 	MEMORY_BLOCK *child1 = &endstub + sizeof(PRIMARY_MEMORY_BLOCK); 
 	if((*SYSTEM_PRIMARY_MEMORY_BLOCK).REGION.START == (*SYSTEM_PRIMARY_MEMORY_BLOCK).START) { 
-		t_writeln("Good to go"); 
+		t_writeln("Primary Block Check Pass"); 
 	} else { 
-		t_writeln("Error"); 
+		t_writeln("Pimary Check Fail"); 
 	} 
+	
+	MEMORY_BLOCK *childptr = (*SYSTEM_PRIMARY_MEMORY_BLOCK).REGION.START; 	
+	if((*childptr).REGION.END == 0xFFFFFFFF) { 
+		t_writeln("Child Block Check Pass"); 
+	} else { 
+		t_writeln("Child Check Failed"); 
+	}
+
 	t_writeln("Done."); 
 };
 
