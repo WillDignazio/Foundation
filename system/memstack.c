@@ -53,6 +53,7 @@ void memstackinit() {
 	struct MEMORY_BLOCK child; 
 	child.REGION.START = primary.REGION.START; 
 	child.REGION.END = 0xFFFFFFFF;
+	child.ATTRIBUTES = 1; 
 
 	/* After everything in the blocks has been initialized, 
 	** the blocks need to be copied from here, to the end of the 
@@ -75,3 +76,21 @@ void memstackinit() {
 	PRIMARY_MEMORY_BLOCK *SYSTEM_PRIMARY_MEMORY_BLOCK = primary_addr; 
 
 }
+
+
+/* Sets the attribute byte for the memory block as follows: 
+** 	BIT		0			1
+**	0		In Use		Free
+**	1		
+**	2		
+** 	3		
+**	4
+**	5
+**	6
+**	7
+*/	
+void set_attribute(unsigned char attr, MEMORY_BLOCK* block) { 		
+	(*block).ATTRIBUTES = attr; 
+} 
+
+
