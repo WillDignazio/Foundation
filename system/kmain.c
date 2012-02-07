@@ -14,6 +14,7 @@
 #include <foundation/string.h>
 #include <foundation/membloc.h>
 #include <foundation/memory.h>
+#include <foundation/binary.h>
 
 /* Kernel Initializer
 ** 	- Readies the kernel
@@ -57,20 +58,23 @@ void kernal_init()
 void kernel_main()
 {
 	kernal_init();
-	MEMORY_BLOCK *child1 = &endstub + sizeof(PRIMARY_MEMORY_BLOCK); 
-	if((*SYSTEM_PRIMARY_MEMORY_BLOCK).REGION.START == (*SYSTEM_PRIMARY_MEMORY_BLOCK).START) { 
-		t_writeln("Primary Block Check Pass"); 
-	} else { 
-		t_writeln("Pimary Check Fail"); 
-	} 
 	
-	MEMORY_BLOCK *childptr = (*SYSTEM_PRIMARY_MEMORY_BLOCK).REGION.START; 	
-	if((*childptr).REGION.END == 0xFFFFFFFF) { 
-		t_writeln("Child Block Check Pass"); 
-	} else { 
-		t_writeln("Child Check Failed"); 
-	}
+	/* ###########################################################
+	** ################## TEST ZONE ############################# */ 
+
+	t_wipe_console(); 
+	t_reset(); 
+
+	unsigned char test = b00000001; 
+	test = test << 7;
+	if (b10000001 > 0) { t_writeln("Greater Than Zero"); } 
+	else { t_writeln("Lower Than Zero"); } 
+	if (test == b11000000) { t_writeln("O.K."); }  
+	t_writeln(&test); 
 
 	t_writeln("Done."); 
+
+	/* ################ END ZONE ###############################
+	** ########################################################*/
 };
 

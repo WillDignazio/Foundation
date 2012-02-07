@@ -11,12 +11,16 @@
 #define MEMORY_GAURD_H
 
 #include "membloc.h"
+#include "system.h"
 
 extern PRIMARY_MEMORY_BLOCK* SYSTEM_PRIMARY_MEMORY_BLOCK; 
 
 /* Memory Stack Driver */
 void meminit(); 
 void set_attribute(unsigned char, MEMORY_BLOCK*); 
+
+bool checkEndBlock(MEMORY_BLOCK*); 
+bool checkFree(MEMORY_BLOCK*); 
 
 
 void memcpy(unsigned char*, unsigned char*,unsigned int); 

@@ -44,8 +44,7 @@ void memset(unsigned char* addr, unsigned int val, unsigned int len) {
 ** it will be able to use it and custom set other attributes. 
 */
 MEMORY_BLOCK* malloc(int size) 
-{
-	
+{	
 	return 0; 
 }
 

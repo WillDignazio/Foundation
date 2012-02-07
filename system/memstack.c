@@ -11,6 +11,7 @@
 #include <foundation/textmode.h>
 #include <foundation/system.h>
 #include <foundation/memory.h> 
+#include <foundation/binary.h>
 
 /* Initializes the memory stack that the kernel uses 
 ** for processes and variable malloc's.  
@@ -53,7 +54,7 @@ void memstackinit() {
 	struct MEMORY_BLOCK child; 
 	child.REGION.START = primary.REGION.START; 
 	child.REGION.END = 0xFFFFFFFF;
-	child.ATTRIBUTES = 1; 
+	child.ATTRIBUTES = b10000001; 
 
 	/* After everything in the blocks has been initialized, 
 	** the blocks need to be copied from here, to the end of the 
