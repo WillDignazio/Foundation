@@ -65,12 +65,11 @@ void kernel_main()
 	t_wipe_console(); 
 	t_reset(); 
 
-	unsigned char test = b00000001; 
-	test = test << 7;
-	if (b10000001 > 0) { t_writeln("Greater Than Zero"); } 
-	else { t_writeln("Lower Than Zero"); } 
-	if (test == b11000000) { t_writeln("O.K."); }  
-	t_writeln(&test); 
+	MEMORY_BLOCK* child = (*SYSTEM_PRIMARY_MEMORY_BLOCK).START; 
+	if (checkFree(child)) { t_writeln("Child Is Free"); } 
+	else { t_writeln("Child Is Not Free"); } 
+	if (checkEndBlock(child)) { t_writeln("Child Is End Block"); } 
+	else { t_writeln("Chile Is Not End Block"); } 
 
 	t_writeln("Done."); 
 

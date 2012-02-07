@@ -54,7 +54,7 @@ void memstackinit() {
 	struct MEMORY_BLOCK child; 
 	child.REGION.START = primary.REGION.START; 
 	child.REGION.END = 0xFFFFFFFF;
-	child.ATTRIBUTES = b10000001; 
+	child.ATTRIBUTES = b10000000; 
 
 	/* After everything in the blocks has been initialized, 
 	** the blocks need to be copied from here, to the end of the 

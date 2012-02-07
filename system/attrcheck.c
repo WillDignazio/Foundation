@@ -15,9 +15,9 @@
 ** blocks attribute byte to see if the 
 ** block is in use by a program. */
 bool checkFree(MEMORY_BLOCK* block) { 
-	char attr_byte = (*block).ATTRIBUTES; 
+	unsigned char attr_byte = (*block).ATTRIBUTES; 
 	attr_byte = attr_byte << 7; 
-	if (attr_byte > b01111111) { 
+	if (attr_byte == b10000000) { 
 		return false; } 
 	return true;  
 } 
@@ -25,8 +25,10 @@ bool checkFree(MEMORY_BLOCK* block) {
 /* Checks the end bit of the memory block attribute byte
 ** to see if the block is designated as the 
 ** end block in the memory. */
-bool checkEndBlock(MEMORY_BLOCK* block) { 
-	if ((*block).ATTRIBUTES > b01111111) { 
+bool checkEndBlock(MEMORY_BLOCK* block) {
+	unsigned char attr_byte = (*block).ATTRIBUTES; 
+	attr_byte = attr_byte & b10000000; 
+	if (attr_byte == b10000000) { 
 		return true; }
 	return false; 
 } 
