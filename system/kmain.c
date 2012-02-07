@@ -61,15 +61,10 @@ void kernel_main()
 	
 	/* ###########################################################
 	** ################## TEST ZONE ############################# */ 
-
 	t_wipe_console(); 
 	t_reset(); 
 
-	MEMORY_BLOCK* child = (*SYSTEM_PRIMARY_MEMORY_BLOCK).START; 
-	if (checkFree(child)) { t_writeln("Child Is Free"); } 
-	else { t_writeln("Child Is Not Free"); } 
-	if (checkEndBlock(child)) { t_writeln("Child Is End Block"); } 
-	else { t_writeln("Chile Is Not End Block"); } 
+		
 
 	t_writeln("Done."); 
 
