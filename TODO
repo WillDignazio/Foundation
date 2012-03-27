@@ -1,0 +1,4 @@
+03/27/2012: 
+    - Fix make system so you don't have to clean everytime
+    - The whole mallocing thing
+    - Porting to 64 bit
