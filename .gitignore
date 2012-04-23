@@ -1,3 +1,4 @@
 #Atlas build object
 *.o
 *.img
+docs/*
